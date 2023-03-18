@@ -10,7 +10,9 @@
     "build": "rm -rf lib; tsc",
     "build:watch": "rm -rf lib; tsc --watch",
     "format": "prettier src --write",
-    "test": "vitest --run"
+    "test:ts": "vitest --dir src --threads false --run",
+    "test:watch": "vitest --dir src --threads false",
+    "test": "npm run test:ts"
   },
   "devDependencies": {
     "prettier": "^2.8.4",
