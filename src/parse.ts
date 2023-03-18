@@ -1,5 +1,5 @@
-import { parseXml, XmlNode, XmlElement, XmlText } from '@rgrove/parse-xml'
-import { h, XElement, XNode } from './index'
+import { XmlElement, XmlNode, XmlText, parseXml } from "@rgrove/parse-xml"
+import { XElement, XNode, h } from "./index"
 
 interface ParsingErrorOptions {
   column: number
@@ -23,10 +23,10 @@ export function parseNodes(input: string): Array<XNode> {
   } catch (error) {
     if (!(error instanceof Error)) throw error
     if (
-      error.hasOwnProperty('column') &&
-      error.hasOwnProperty('excerpt') &&
-      error.hasOwnProperty('line') &&
-      error.hasOwnProperty('pos')
+      error.hasOwnProperty("column") &&
+      error.hasOwnProperty("excerpt") &&
+      error.hasOwnProperty("line") &&
+      error.hasOwnProperty("pos")
     ) {
       throw new ParsingError(error.message, error as any)
     } else {
@@ -38,8 +38,8 @@ export function parseNodes(input: string): Array<XNode> {
 function fromNodes(childNodes: Array<XmlNode>): Array<XNode> {
   const nodes = []
   for (const node of childNodes) {
-    if (node.type === 'element') nodes.push(fromElement(node as XmlElement))
-    if (node.type === 'text') nodes.push(fromText(node as XmlText))
+    if (node.type === "element") nodes.push(fromElement(node as XmlElement))
+    if (node.type === "text") nodes.push(fromText(node as XmlText))
   }
 
   return nodes

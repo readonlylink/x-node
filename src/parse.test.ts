@@ -1,7 +1,7 @@
-import { expect, test } from 'vitest'
-import { parseNodes } from './parse'
+import { expect, test } from "vitest"
+import { parseNodes } from "./parse"
 
-test('basic', () => {
+test("basic", () => {
   const nodes = parseNodes(
     `
 <question class="text-2xl" color="red"> Hello world </question>
@@ -13,19 +13,19 @@ note
   )
 
   expect(nodes).toEqual([
-    '\n',
+    "\n",
     {
-      tag: 'question',
-      attributes: { class: 'text-2xl', color: 'red' },
-      children: [' Hello world '],
+      tag: "question",
+      attributes: { class: "text-2xl", color: "red" },
+      children: [" Hello world "],
     },
-    '\n\nnote\n\n',
-    { tag: 'answer', attributes: {}, children: [' hi '] },
-    '\n',
+    "\n\nnote\n\n",
+    { tag: "answer", attributes: {}, children: [" hi "] },
+    "\n",
   ])
 })
 
-test('Chinese tag name', () => {
+test("Chinese tag name", () => {
   const nodes = parseNodes(
     `
 <问 class="text-2xl" color="red"> Hello world </问>
@@ -37,19 +37,19 @@ note
   )
 
   expect(nodes).toEqual([
-    '\n',
+    "\n",
     {
-      tag: '问',
-      attributes: { class: 'text-2xl', color: 'red' },
-      children: [' Hello world '],
+      tag: "问",
+      attributes: { class: "text-2xl", color: "red" },
+      children: [" Hello world "],
     },
-    '\n\nnote\n\n',
-    { tag: '答', attributes: {}, children: [' hi '] },
-    '\n',
+    "\n\nnote\n\n",
+    { tag: "答", attributes: {}, children: [" hi "] },
+    "\n",
   ])
 })
 
-test('Self closing tag', () => {
+test("Self closing tag", () => {
   const nodes = parseNodes(
     `
 <主题 颜色="青" />
@@ -57,17 +57,17 @@ test('Self closing tag', () => {
   )
 
   expect(nodes).toEqual([
-    '\n',
+    "\n",
     {
-      tag: '主题',
-      attributes: { 颜色: '青' },
+      tag: "主题",
+      attributes: { 颜色: "青" },
       children: [],
     },
-    '\n',
+    "\n",
   ])
 })
 
-test('error on disallowed character in tag name', () => {
+test("error on disallowed character in tag name", () => {
   expect(() => {
     const nodes = parseNodes(`<q&a></q&a>`)
   }).toThrow()
@@ -77,7 +77,7 @@ test('error on disallowed character in tag name', () => {
   }).toThrow()
 })
 
-test('namespace prefix', () => {
+test("namespace prefix", () => {
   const nodes = parseNodes(
     `
 <question theme:color="red">
@@ -87,12 +87,12 @@ test('namespace prefix', () => {
   )
 
   expect(nodes).toEqual([
-    '\n',
+    "\n",
     {
-      tag: 'question',
-      attributes: { 'theme:color': 'red' },
-      children: ['\n  Q\n'],
+      tag: "question",
+      attributes: { "theme:color": "red" },
+      children: ["\n  Q\n"],
     },
-    '\n',
+    "\n",
   ])
 })

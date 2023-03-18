@@ -7,7 +7,7 @@ export type XElement = {
 }
 
 export function isElement(node: XNode): node is XElement {
-  return typeof node === 'object'
+  return typeof node === "object"
 }
 
 export function matchElement(

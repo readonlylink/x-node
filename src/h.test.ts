@@ -1,28 +1,28 @@
-import { expect, test } from 'vitest'
-import { h } from './index'
+import { expect, test } from "vitest"
+import { h } from "./index"
 
-test('h', () => {
-  expect(h('question', { color: 'red' }, ['Why?'])).toEqual({
-    tag: 'question',
-    attributes: { color: 'red' },
-    children: ['Why?'],
+test("h", () => {
+  expect(h("question", { color: "red" }, ["Why?"])).toEqual({
+    tag: "question",
+    attributes: { color: "red" },
+    children: ["Why?"],
   })
 
-  expect(h('question', ['Why?'])).toEqual({
-    tag: 'question',
+  expect(h("question", ["Why?"])).toEqual({
+    tag: "question",
     attributes: {},
-    children: ['Why?'],
+    children: ["Why?"],
   })
 
-  expect(h('question', { color: 'red' })).toEqual({
-    tag: 'question',
-    attributes: { color: 'red' },
+  expect(h("question", { color: "red" })).toEqual({
+    tag: "question",
+    attributes: { color: "red" },
     children: [],
   })
 
-  expect(h('question', { color: 'red' }, 'Why?')).toEqual({
-    tag: 'question',
-    attributes: { color: 'red' },
-    children: ['Why?'],
+  expect(h("question", { color: "red" }, "Why?")).toEqual({
+    tag: "question",
+    attributes: { color: "red" },
+    children: ["Why?"],
   })
 })
