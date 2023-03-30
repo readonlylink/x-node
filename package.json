@@ -1,6 +1,6 @@
 {
   "name": "@readonlylink/x-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "github:readonlylink/x-node",
   "main": "lib/index.js",
   "files": [
