@@ -3,7 +3,7 @@
 ## Install
 
 ``` bash
-npm i @xieyuheng/x-node
+npm i @readonlylink/x-node
 ```
 
 ## Contributions

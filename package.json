@@ -1,7 +1,7 @@
 {
-  "name": "@xieyuheng/x-node",
+  "name": "@readonlylink/x-node",
   "version": "0.0.1",
-  "repository": "github:xieyuheng/x-node",
+  "repository": "github:readonlylink/x-node",
   "main": "lib/index.js",
   "files": [
     "lib"
