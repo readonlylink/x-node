@@ -1,5 +1,6 @@
 import { XmlElement, XmlNode, XmlText, parseXml } from "@rgrove/parse-xml"
-import { XElement, XNode, h } from "./index"
+import { h } from "./h"
+import { XElement, XNode } from "./x-node"
 
 interface ParsingErrorOptions {
   column: number
