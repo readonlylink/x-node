@@ -1,4 +1,4 @@
-import { XElement, XNode } from "./types"
+import { XElement, XNode } from "./x-node"
 
 type Args = NormalArgs | TagArgs | TagChildrenArgs | TagAttributesRestArgs
 
