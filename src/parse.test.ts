@@ -1,8 +1,8 @@
 import { expect, test } from "vitest"
-import { parseNodes } from "./parse"
+import { parse } from "./parse"
 
 test("basic", () => {
-  const nodes = parseNodes(
+  const nodes = parse(
     `
 <question class="text-2xl" color="red"> Hello world </question>
 
@@ -26,7 +26,7 @@ note
 })
 
 test("Chinese tag name", () => {
-  const nodes = parseNodes(
+  const nodes = parse(
     `
 <问 class="text-2xl" color="red"> Hello world </问>
 
@@ -50,7 +50,7 @@ note
 })
 
 test("Self closing tag", () => {
-  const nodes = parseNodes(
+  const nodes = parse(
     `
 <主题 颜色="青" />
 `,
@@ -69,16 +69,16 @@ test("Self closing tag", () => {
 
 test("error on disallowed character in tag name", () => {
   expect(() => {
-    const nodes = parseNodes(`<q&a></q&a>`)
+    const nodes = parse(`<q&a></q&a>`)
   }).toThrow()
 
   expect(() => {
-    const nodes = parseNodes(`<q+a></q+a>`)
+    const nodes = parse(`<q+a></q+a>`)
   }).toThrow()
 })
 
 test("namespace prefix", () => {
-  const nodes = parseNodes(
+  const nodes = parse(
     `
 <question theme:color="red">
   Q

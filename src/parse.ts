@@ -9,6 +9,7 @@ interface ParsingErrorOptions {
 }
 
 export interface ParsingError extends ParsingErrorOptions {}
+
 export class ParsingError extends Error {
   constructor(public message: string, options: ParsingErrorOptions) {
     super()
@@ -16,7 +17,7 @@ export class ParsingError extends Error {
   }
 }
 
-export function parseNodes(input: string): Array<XNode> {
+export function parse(input: string): Array<XNode> {
   try {
     const root = parseXml(`<root>${input}</root>`, {})
     return fromNodes((root.children[0] as any).children)
