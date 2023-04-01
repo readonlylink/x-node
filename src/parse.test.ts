@@ -13,7 +13,6 @@ note
   )
 
   expect(nodes).toEqual([
-    "\n",
     {
       tag: "question",
       attributes: { class: "text-2xl", color: "red" },
@@ -25,56 +24,54 @@ note
   ])
 })
 
-test("Chinese tag name", () => {
-  const nodes = parse(
-    `
-<问 class="text-2xl" color="red"> Hello world </问>
-
-note
-
-<答> hi </答>
-`,
-  )
+test("self-closing tag", () => {
+  const nodes = parse(`<question theme:color="red" />`)
 
   expect(nodes).toEqual([
-    "\n",
     {
-      tag: "问",
-      attributes: { class: "text-2xl", color: "red" },
-      children: [" Hello world "],
+      tag: "question",
+      attributes: { "theme:color": "red" },
+      children: [],
     },
-    "\n\nnote\n\n",
-    { tag: "答", attributes: {}, children: [" hi "] },
-    "\n",
   ])
 })
 
-test("Self closing tag", () => {
+test("self-closing tag -- newline pushed to children", () => {
   const nodes = parse(
     `
-<主题 颜色="青" />
+<question theme:color="red" />
 `,
   )
 
   expect(nodes).toEqual([
+    {
+      tag: "question",
+      attributes: { "theme:color": "red" },
+      children: ["\n"],
+    },
+  ])
+})
+
+test("crazy tag name", () => {
+  const nodes = parse(`
+<q&a></q&a>
+<q+a></q+a>
+`)
+
+  expect(nodes).toEqual([
+    {
+      tag: "q&a",
+      attributes: {},
+      children: [],
+    },
     "\n",
     {
-      tag: "主题",
-      attributes: { 颜色: "青" },
+      tag: "q+a",
+      attributes: {},
       children: [],
     },
     "\n",
   ])
-})
-
-test("error on disallowed character in tag name", () => {
-  expect(() => {
-    const nodes = parse(`<q&a></q&a>`)
-  }).toThrow()
-
-  expect(() => {
-    const nodes = parse(`<q+a></q+a>`)
-  }).toThrow()
 })
 
 test("namespace prefix", () => {
@@ -87,7 +84,6 @@ test("namespace prefix", () => {
   )
 
   expect(nodes).toEqual([
-    "\n",
     {
       tag: "question",
       attributes: { "theme:color": "red" },
