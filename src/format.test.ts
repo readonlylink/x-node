@@ -3,7 +3,7 @@ import { format } from "./format"
 import { parse } from "./parse"
 
 test("format", () => {
-  const text = `\
+  const text = `
 hi
 
 <x> hi </x>
