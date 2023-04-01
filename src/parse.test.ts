@@ -24,6 +24,18 @@ note
   ])
 })
 
+test("html </>", () => {
+  const nodes = parse("</>")
+
+  expect(nodes).toEqual([])
+})
+
+test("html <>", () => {
+  const nodes = parse("<>")
+
+  expect(nodes).toEqual(["<>"])
+})
+
 test("self-closing tag", () => {
   const nodes = parse(`<question theme:color="red" />`)
 
