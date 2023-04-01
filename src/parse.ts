@@ -20,7 +20,10 @@ export class ParsingError extends Error {
 
 export function parse(input: string): Array<XNode> {
   try {
-    const root = parseXml(`<root>${input}</root>`, {})
+    const root = parseXml(`<root>${input}</root>`, {
+      ignoreUndefinedEntities: true,
+    })
+
     return fromNodes((root.children[0] as any).children)
   } catch (error) {
     if (!(error instanceof Error)) throw error
