@@ -1,8 +1,10 @@
 # X Node
 
+A stable XML AST to protect myself from switching upstream parser and upstream API changes.
+
 ## Install
 
-``` bash
+```bash
 npm i @readonlylink/x-node
 ```
 
