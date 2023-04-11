@@ -5,7 +5,7 @@ A stable XML AST to protect myself from switching upstream parser and upstream A
 ## Install
 
 ```bash
-npm i @readonlylink/x-node
+npm i @xieyuheng/x-node
 ```
 
 ## Contributions
