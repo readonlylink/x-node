@@ -12,7 +12,10 @@ interface ParsingErrorOptions {
 export interface ParsingError extends ParsingErrorOptions {}
 
 export class ParsingError extends Error {
-  constructor(public message: string, options: ParsingErrorOptions) {
+  constructor(
+    public message: string,
+    options: ParsingErrorOptions,
+  ) {
     super()
     Object.assign(this, options)
   }
