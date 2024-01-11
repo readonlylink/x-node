@@ -1,6 +1,6 @@
 import { XmlElement, XmlNode, XmlText, parseXml } from "@rgrove/parse-xml"
-import { h } from "./h"
-import { XElement, XNode } from "./x-node"
+import { h } from "./h.js"
+import { type XElement, type XNode } from "./x-node.js"
 
 interface ParsingErrorOptions {
   column: number

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest"
-import { format } from "./format"
-import { parse } from "./parse"
+import { format } from "./format.js"
+import { parse } from "./parse.js"
 
 test("format", () => {
   const text = `

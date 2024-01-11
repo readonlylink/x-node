@@ -1,5 +1,5 @@
 import { expect, test } from "vitest"
-import { h } from "./h"
+import { h } from "./h.js"
 
 test("h", () => {
   expect(h("question", { color: "red" }, ["Why?"])).toEqual({

@@ -1,4 +1,4 @@
-import { XElement, XNode } from "./x-node"
+import { type XElement, type XNode } from "./x-node.js"
 
 export function format(nodes: Array<XNode>): string {
   return nodes
