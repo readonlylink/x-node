@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { format } from "./format.js"
 import { parse } from "./parse.js"
 
@@ -14,5 +15,5 @@ hi
 `
   const nodes = parse(text)
 
-  expect(format(nodes)).toEqual(text)
+  assert(format(nodes) === text)
 })

@@ -1,4 +1,5 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { parse } from "./parse.js"
 
 test("basic", () => {
@@ -12,7 +13,7 @@ note
 `,
   )
 
-  expect(nodes).toEqual([
+  assert.deepEqual(nodes, [
     "\n",
     {
       tag: "question",
@@ -36,7 +37,7 @@ note
 `,
   )
 
-  expect(nodes).toEqual([
+  assert.deepEqual(nodes, [
     "\n",
     {
       tag: "问",
@@ -56,7 +57,7 @@ test("Self closing tag", () => {
 `,
   )
 
-  expect(nodes).toEqual([
+  assert.deepEqual(nodes, [
     "\n",
     {
       tag: "主题",
@@ -68,13 +69,15 @@ test("Self closing tag", () => {
 })
 
 test("error on disallowed character in tag name", () => {
-  expect(() => {
+  try {
     const nodes = parse(`<q&a></q&a>`)
-  }).toThrow()
+    assert(false)
+  } catch (error) {}
 
-  expect(() => {
+  try {
     const nodes = parse(`<q+a></q+a>`)
-  }).toThrow()
+    assert(false)
+  } catch (error) {}
 })
 
 test("namespace prefix", () => {
@@ -86,7 +89,7 @@ test("namespace prefix", () => {
 `,
   )
 
-  expect(nodes).toEqual([
+  assert.deepEqual(nodes, [
     "\n",
     {
       tag: "question",

@@ -1,26 +1,27 @@
-import { expect, test } from "vitest"
+import assert from "node:assert"
+import { test } from "node:test"
 import { h } from "./h.js"
 
 test("h", () => {
-  expect(h("question", { color: "red" }, ["Why?"])).toEqual({
+  assert.deepStrictEqual(h("question", { color: "red" }, ["Why?"]), {
     tag: "question",
     attributes: { color: "red" },
     children: ["Why?"],
   })
 
-  expect(h("question", ["Why?"])).toEqual({
+  assert.deepStrictEqual(h("question", ["Why?"]), {
     tag: "question",
     attributes: {},
     children: ["Why?"],
   })
 
-  expect(h("question", { color: "red" })).toEqual({
+  assert.deepStrictEqual(h("question", { color: "red" }), {
     tag: "question",
     attributes: { color: "red" },
     children: [],
   })
 
-  expect(h("question", { color: "red" }, "Why?")).toEqual({
+  assert.deepStrictEqual(h("question", { color: "red" }, "Why?"), {
     tag: "question",
     attributes: { color: "red" },
     children: ["Why?"],
